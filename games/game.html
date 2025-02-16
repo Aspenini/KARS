@@ -42,9 +42,8 @@
 		const params = new URLSearchParams(window.location.search);
 		const gameName = params.get('name') || 'Unknown Game';
 		document.getElementById('gameTitle').innerText = gameName;
-		// Optionally, update artwork based on game name if available
-		// For example:
-		// document.querySelector('.game-artwork-detail img').src = '../artwork/' + gameName + '.png';
+		 // Update artwork to reuse the same art as in the console page.
+		document.querySelector('.game-artwork-detail img').src = '../artwork/' + gameName + '.png';
 	</script>
 </body>
 </html>
