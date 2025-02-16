@@ -11,19 +11,19 @@
     </style>
 </head>
 <body>
-    <h1>My File Browser</h1>
+    <h1>KARS</h1>
     <ul id="file-list"></ul>
 
     <script>
         async function fetchFiles() {
-            const response = await fetch('https://randomstring.ngrok.io/files.json');
+            const response = await fetch('https://12ec-76-8-190-250.ngrok-free.app/files.json');
             const files = await response.json();
             const fileList = document.getElementById('file-list');
 
             fileList.innerHTML = '';
             files.forEach(file => {
                 const li = document.createElement('li');
-                li.innerHTML = `<a href="https://randomstring.ngrok.io/${file}" download>${file}</a>`;
+                li.innerHTML = `<a href="https://12ec-76-8-190-250.ngrok-free.app/${file}" download>${file}</a>`;
                 fileList.appendChild(li);
             });
         }
