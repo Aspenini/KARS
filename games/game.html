@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- ...existing code... -->
+	<title>Game Details - KARS</title>
+	<link rel="stylesheet" href="../style.css">
+	<link rel="icon" href="../img/favicon.ico">
+</head>
+<body>
+	<!-- Side Menu -->
+	<div id="sideMenu" class="sidemenu">
+		<button class="closebtn" onclick="toggleMenu()">×</button>
+		<a href="../consoles/nintendo-switch.html">Nintendo Switch</a>
+		<!-- ...existing side menu links... -->
+	</div>
+	<header>
+		<div class="header-left">
+			<button class="menu-btn" onclick="toggleMenu()">☰</button>
+		</div>
+		<h1><a href="../index.html" style="color:inherit; text-decoration:none;">KARS</a></h1>
+	</header>
+	
+	<!-- Game Detail Content -->
+	<div class="game-detail">
+		<h2 id="gameTitle">Game Title</h2>
+		<div class="game-artwork-detail">
+			<img src="../artwork/sample.jpg" alt="Game Artwork">
+		</div>
+		<div class="download-section" id="downloadSection">
+			<h3>Download Mirrors</h3>
+			<ul>
+				<li><a href="#" target="_blank">Mirror 1</a></li>
+				<li><a href="#" target="_blank">Mirror 2</a></li>
+				<!-- ...other mirrors... -->
+			</ul>
+		 </div>
+	</div>
+
+	<script src="../script.js"></script>
+	<script>
+		// ...existing code to set game title...
+		const params = new URLSearchParams(window.location.search);
+		const gameName = params.get('name') || 'Unknown Game';
+		document.getElementById('gameTitle').innerText = gameName;
+		// Optionally, update artwork based on game name if available
+		// For example:
+		// document.querySelector('.game-artwork-detail img').src = '../artwork/' + gameName + '.png';
+	</script>
+</body>
+</html>

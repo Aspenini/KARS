@@ -1,34 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KARS</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; }
-        ul { list-style-type: none; padding: 0; }
-        li { margin: 10px 0; }
-    </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>KARS - Kevin Allen's Rom Site</title>
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>KARS</h1>
-    <ul id="file-list"></ul>
+	<!-- Side Menu -->
+	<div id="sideMenu" class="sidemenu">
+		<button class="closebtn" onclick="toggleMenu()">×</button>
+		<a href="consoles/nintendo-switch.html">Nintendo Switch</a>
+		<!-- Additional console links can be added here -->
+	</div>
+	<header>
+		<div class="header-left">
+			<button class="menu-btn" onclick="toggleMenu()">☰</button>
+		</div>
+		<h1><a href="index.html" style="color:inherit; text-decoration:none;">KARS</a></h1>
+	</header>
 
-    <script>
-        async function fetchFiles() {
-            const response = await fetch('https://12ec-76-8-190-250.ngrok-free.app/files.json');
-            const files = await response.json();
-            const fileList = document.getElementById('file-list');
+	<main>
+		<h2>Welcome to KARS</h2>
+		<p>Your platform for distributing ROMs</p>
+	</main>
 
-            fileList.innerHTML = '';
-            files.forEach(file => {
-                const li = document.createElement('li');
-                li.innerHTML = `<a href="https://12ec-76-8-190-250.ngrok-free.app/${file}" download>${file}</a>`;
-                fileList.appendChild(li);
-            });
-        }
-
-        fetchFiles();
-    </script>
+	<script src="script.js"></script>
 </body>
 </html>
