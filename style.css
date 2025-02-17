@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'NovaRound';
+    src: url('resources/NovaRound-Regular.ttf') format('truetype');
+}
+
 /* CSS Variables for Themes */
 :root {
     --background-color: #1b2838;
@@ -21,7 +26,7 @@
 
 /* General Styles */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'NovaRound', sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
     margin: 0;
@@ -109,4 +114,26 @@ footer {
     .game-list, .app-list {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
+}
+
+.download-button {
+    display: inline-block;
+    padding: 15px 25px;
+    background-color: var(--button-active-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+}
+
+.download-button:hover {
+    background-color: var(--button-hover-color);
+}
+
+.mirror-item span {
+    font-size: 1.2em;
+    vertical-align: middle;
+    margin-right: 10px;
 }

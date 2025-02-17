@@ -15,7 +15,7 @@
     <title>Kevin-Allen-ROMS</title>
     
     <!-- Favicon for the website tab -->
-    <link rel="icon" href="icon/funky-icon.png" type="image/png">
+    <link rel="icon" href="../../recources/kevinallen.png" type="image/png">
     
     <!-- Include stylesheet -->
     <link rel="stylesheet" href="../../style.css">
@@ -41,33 +41,28 @@
             <div class="rom-info text-center p-4 border rounded-lg shadow-lg bg-gray-100">
                 <!-- Game Art -->
                 <img src="../../artwork/psp/gta-vice-city-stories-long-capsule.png" alt="VC Stories" class="w-full max-w-md mx-auto rounded-lg">
-            
-                <!-- Description Toggle -->
-                <div id="description" class="hidden" style="max-width:600px; margin: 0 auto; word-wrap: break-word;">
-                    <p>Grand Theft Auto: Vice City Stories is a 2006 action-adventure game developed by Rockstar Leeds and Rockstar North for the PlayStation Portable. Set in 1984, it serves as a prequel to Grand Theft Auto: Vice City, following Victor "Vic" Vance as he builds a criminal empire amidst Vice City's power struggles. The game introduces an "empire building" system, allowing players to take over businesses and expand their influence. Praised for its engaging storyline and vibrant open world, Vice City Stories has sold over 4.5 million copies, making it one of the best-selling PSP games.</p>
+
+                <!-- Description Content inside a bubble; statically visible -->
+                <div id="description" class="bubble" style="max-width:600px; margin:20px auto; padding:15px; background:#2a2a70; border-radius:25px; word-wrap: break-word;">
+                    <p>
+                        Grand Theft Auto: Vice City Stories is a 2006 action-adventure game developed by Rockstar Leeds and Rockstar North for the PlayStation Portable. Set in 1984, it serves as a prequel to Grand Theft Auto: Vice City, following Victor "Vic" Vance as he builds a criminal empire amidst Vice City's power struggles. The game introduces an "empire building" system, allowing players to take over businesses and expand their influence. Praised for its engaging storyline and vibrant open world, Vice City Stories has sold over 4.5 million copies, making it one of the best-selling PSP games.
+                    </p>
                 </div>
             </div>
             
-                <!-- Download Mirrors -->
-                <div class="mt-6">
-                    <h2 class="text-lg font-bold">Download Mirrors</h2>
-                    <div class="mt-2">
-                        <div class="mirror-item flex justify-between items-center p-2 bg-white border rounded-lg mt-2">
-                            <span>Mega.nz</span>
-                            <a href="https://mega.nz/file/1UgVSaib#AqbeU4pmk7A55iN5IHaTrVLqrE0X574vASp7KRprzik" class="bg-green-500 text-white px-4 py-2 rounded-lg shadow">
-                                Download
-                            </a>
-                        </div>
+            <!-- Download Mirrors inside a bubble -->
+            <div class="bubble" style="max-width:600px; margin:20px auto; padding:15px; background:#2a2a70; border-radius:25px;">
+                <h2 class="text-lg font-bold">Download Mirrors</h2>
+                <div class="mt-2">
+                    <div class="mirror-item flex justify-between items-center p-2 bg-white border rounded-lg mt-2">
+                        <span>Mega.nz</span>
+                        <a href="https://mega.nz/file/1UgVSaib#AqbeU4pmk7A55iN5IHaTrVLqrE0X574vASp7KRprzik" target="_blank" class="download-button">
+                            Download
+                        </a>
                     </div>
                 </div>
             </div>
             
-            <script>
-                function toggleDescription() {
-                    var desc = document.getElementById("description");
-                    desc.classList.toggle("hidden");
-                }
-            </script>            
         </section>
     </div>
 
