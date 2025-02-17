@@ -1,163 +1,112 @@
+/* CSS Variables for Themes */
+:root {
+    --background-color: #1b2838;
+    --text-color: #c7d5e0;
+    --header-color: #171a21;
+    --button-hover-color: #66c0f4;
+    --button-active-color: #66c0f4;
+}
+
+[data-theme="dark"] {
+    --background-color: #121212;
+    --text-color: #ffffff;
+    --header-color: #1E1E1E;
+}
+
+[data-theme="blue"] {
+    --background-color: #dcefff;
+    --text-color: #002d5f;
+    --header-color: #003f88;
+}
+
+/* General Styles */
 body {
-	margin: 0;
-	font-family: Arial, sans-serif;
-	background: #f4f4f4;
-	color: #333;
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    text-align: center;
 }
 
-/* Header */
 header {
-	position: relative;             /* new: for positioning */
-	display: flex;
-	justify-content: center;        /* center header content */
-	align-items: center;
-	background: #222;
-	color: #fff;
-	padding: 10px 20px;
+    background-color: var(--header-color);
+    color: white;
+    padding: 20px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.header-left {
-	position: absolute;
-	left: 20px;                   /* menu button stays to the left */
+/* Navigation bar styles */
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: var(--header-color);
+    padding: 20px; /* Thicker panel */
 }
 
-/* Menu button */
-.menu-btn {
-	font-size: 24px;
-	background: none;
-	border: none;
-	color: #fff;
-	cursor: pointer;
+nav button {
+    padding: 10px 15px; /* Decrease width */
+    font-size: 1.2em; /* Larger text */
+    font-weight: bold; /* Bolder text */
+    text-transform: uppercase; /* All capital letters */
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 2px; /* Closer together */
 }
 
-/* Side Menu */
-.sidemenu {
-	height: 100%;
-	width: 0;
-	position: fixed;
-	z-index: 1000;
-	top: 0;
-	left: 0;
-	background-color: #111;
-	overflow-x: hidden;
-	transition: 0.3s;
-	padding-top: 60px;
+nav button:hover, nav button.active {
+    background-color: var(--button-hover-color);
+    border-radius: 50px; /* More circular highlight area */
+    color: white;
 }
 
-.sidemenu a {
-	padding: 10px 20px;
-	text-decoration: none;
-	font-size: 20px;       /* increased font size */
-	font-weight: bold;     /* bold text */
-	color: #ddd;
-	display: block;
-	transition: background 0.3s, color 0.2s;
+/* Game List Styling */
+.game-list, .app-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background-color: var(--background-color);
+    border-top: 2px solid var(--header-color);
 }
 
-.sidemenu a:hover {
-	background: #333;      /* new hover background */
-	color: #fff;
+.game, .app {
+    background-color: var(--header-color);
+    border: none;
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    max-width: 200px; /* Limit the maximum width */
+    margin: auto; /* Center the game cards */
 }
 
-.closebtn {
-	position: absolute;
-	top: 10px;
-	right: 20px;
-	font-size: 36px;
-	background: none;
-	border: none;
-	color: #fff;
-	cursor: pointer;
+.game:hover, .app:hover {
+    transform: scale(1.05);
 }
 
-/* Main content */
-main {
-	padding: 20px;
-}
-
-/* Search Input */
-#searchInput {
-	width: 100%;
-	max-width: 400px;
-	padding: 10px;
-	margin-bottom: 20px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-}
-
-/* Game items */
-.game-item {
-	background: #fff;
-	padding: 15px;
-	margin: 10px 0;
-	border-radius: 4px;
-	box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-	cursor: pointer;
-	transition: transform 0.2s;
-}
-
-.game-item:hover {
-	transform: scale(1.02);
-}
-
-/* New game artwork container for fixed 2.14:1 aspect ratio */
-.game-artwork-container {
-    position: relative;
+.game img, .app img {
     width: 100%;
-    overflow: hidden;
-    padding-bottom: calc(100% / 2.14);
+    height: 300px; /* Ensures uniform height */
+    object-fit: cover; /* Ensures images do not stretch or skew */
+    border-radius: 15px;
 }
 
-.game-artwork-container img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+footer {
+    margin-top: 50px;
+    padding: 20px;
+    background-color: var(--header-color);
+    color: white;
+    font-size: 1.2em;
 }
 
-/* New grid layout for games list */
-#gamesList {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 20px;
-}
-
-/* Game Detail Page Styling */
-.game-detail {
-	text-align: center;
-	padding: 20px;
-}
-.game-artwork-detail {
-	max-width: 500px;
-	margin: 20px auto;
-}
-.game-artwork-detail img {
-	width: 100%;
-	height: auto;
-	border-radius: 8px;
-	box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-}
-.download-section {
-	margin-top: 30px;
-}
-.download-section ul {
-	list-style: none;
-	padding: 0;
-	display: inline-block;
-}
-.download-section li {
-	margin: 10px 0;
-}
-.download-section li a {
-	color: #222;
-	background: #e0e0e0;
-	padding: 10px 15px;
-	border-radius: 5px;
-	text-decoration: none;
-	transition: background 0.3s;
-}
-.download-section li a:hover {
-	background: #ccc;
+/* Mobile-first Responsive Design */
+@media (min-width: 768px) {
+    .game-list, .app-list {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
 }
