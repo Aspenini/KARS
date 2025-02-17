@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="kevin-allen.org - Your Favortite ROM Site!">
+    
+    <!-- Enable standalone mode on iPhone -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- PWA Icons for iOS -->
+    <link rel="apple-touch-icon" href="icon/funky-icon-192.png">
+
+    <title>Kevin-Allen-ROMS</title>
+    
+    <!-- Favicon for the website tab -->
+    <link rel="icon" href="icon/funky-icon.png" type="image/png">
+    
+    <!-- Include stylesheet -->
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+
+    <!-- Navigation bar for tabs -->
+    <nav>
+        <button class="tab" onclick="location.href='../../index.html'">Home</button>
+        <button class="tab" onclick="location.href='../../consoles/ps1.html'">PS1</button>
+        <button class="tab" onclick="location.href='../../consoles/ps2.html'">PS2</button>
+        <button class="tab" onclick="location.href='../../consoles/ps3.html'">PS3</button>
+        <button class="tab" onclick="location.href='../../consoles/ps4.html'">PS4</button>
+        <button class="tab active" onclick="location.href='../../consoles/psp.html'">PSP</button>
+        <button class="tab" onclick="location.href='../../consoles/ps-vita.html'">PSVita</button>
+        <button class="tab" onclick="location.href='../../consoles/xbox-360.html'">Xbox 360</button>
+        <button class="tab" onclick="location.href='../../consoles/xbox-one.html'">Xbox One</button>
+    </nav>
+
+    <!-- Games tab -->
+    <div id="games" class="tab-content active">
+        <section>
+            <div class="rom-info text-center p-4 border rounded-lg shadow-lg bg-gray-100">
+                <!-- Game Art -->
+                <img src="../../artwork/psp/gta-vice-city-stories-long-capsule.png" alt="VC Stories" class="w-full max-w-md mx-auto rounded-lg">
+            
+                <!-- Description Toggle -->
+                <div id="description" class="hidden" style="max-width:600px; margin: 0 auto; word-wrap: break-word;">
+                    <p>Grand Theft Auto: Vice City Stories is a 2006 action-adventure game developed by Rockstar Leeds and Rockstar North for the PlayStation Portable. Set in 1984, it serves as a prequel to Grand Theft Auto: Vice City, following Victor "Vic" Vance as he builds a criminal empire amidst Vice City's power struggles. The game introduces an "empire building" system, allowing players to take over businesses and expand their influence. Praised for its engaging storyline and vibrant open world, Vice City Stories has sold over 4.5 million copies, making it one of the best-selling PSP games.</p>
+                </div>
+            </div>
+            
+                <!-- Download Mirrors -->
+                <div class="mt-6">
+                    <h2 class="text-lg font-bold">Download Mirrors</h2>
+                    <div class="mt-2">
+                        <div class="mirror-item flex justify-between items-center p-2 bg-white border rounded-lg mt-2">
+                            <span>Mega.nz</span>
+                            <a href="https://mega.nz/file/1UgVSaib#AqbeU4pmk7A55iN5IHaTrVLqrE0X574vASp7KRprzik" class="bg-green-500 text-white px-4 py-2 rounded-lg shadow">
+                                Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <script>
+                function toggleDescription() {
+                    var desc = document.getElementById("description");
+                    desc.classList.toggle("hidden");
+                }
+            </script>            
+        </section>
+    </div>
+
+    <!-- Page footer -->
+    <footer>
+        © 2025 kevin-allen.org
+    </footer>
+
+    <!-- JavaScript for tab functionality -->
+    <script>
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            document.querySelector(`.tab[onclick="showTab('${tabName}')"]`).classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+        }
+
+        function toggleSettingsMenu() {
+            const settingsMenu = document.getElementById('settings-options');
+            settingsMenu.style.display = settingsMenu.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function changeTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme); // Save the theme preference
+        }
+
+        // Load the saved theme from localStorage
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        changeTheme(savedTheme);
+    </script>
+
+    <!-- Service Worker registration for caching and offline support -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, function(error) {
+                    console.log('ServiceWorker registration failed: ', error);
+                });
+            });
+        }
+    </script>
+
+</body>
+</html>
