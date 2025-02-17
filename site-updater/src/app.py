@@ -8,9 +8,10 @@ class SiteUpdater(QMainWindow):
         self.setWindowTitle("Site Updater")
         self.setGeometry(100, 100, 600, 700)
         # Define paths
-        self.console_dir = r"F:\Projects\KARS\consoles"
-        self.games_dir = r"F:\Projects\KARS\games"
-        self.artwork_dir = r"F:\Projects\KARS\artwork"
+        base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+        self.console_dir = os.path.join(base_dir, "consoles")
+        self.games_dir = os.path.join(base_dir, "games")
+        self.artwork_dir = os.path.join(base_dir, "artwork")
         self.init_ui()
 
     def init_ui(self):
