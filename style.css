@@ -88,14 +88,12 @@ main {
 /* Game items */
 .game-item {
 	background: #fff;
-	padding: 20px;
-	margin: 20px;
+	padding: 15px;
+	margin: 10px 0;
 	border-radius: 4px;
 	box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 	cursor: pointer;
 	transition: transform 0.2s;
-    margin: 20px; /* Increased margin */
-    padding: 20px; /* Added internal padding */
 }
 
 .game-item:hover {
@@ -123,7 +121,7 @@ main {
 #gamesList {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	gap: 30px; /* Increased grid gap */
+	gap: 20px;
 }
 
 /* Game Detail Page Styling */
