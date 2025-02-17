@@ -1,5 +1,5 @@
 # KARS
 
-Welcome to KARS – Your premier destination for distributing ROMs.
+Welcome to Kevin Allen Rom Site – Your premier destination for distributing ROMs.
 
-Visit our live site here: [KARS Live Site](www.kevin-allen.org)
+Visit our live site here: [kevin-allen.org](http://www.kevin-allen.org/)
