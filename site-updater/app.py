@@ -327,8 +327,8 @@ class SiteUpdater(QMainWindow):
 <head>
 	<meta charset="UTF-8">
 	<title>{game_name} - KARS</title>
-	<link rel="stylesheet" href="../../style.css">
-	<link rel="icon" href="../../img/favicon.ico">
+	<link rel="stylesheet" href="/style.css">
+	<link rel="icon" href="/img/favicon.ico">
 </head>
 <body>
 	<div id="sideMenu" class="sidemenu">
@@ -346,7 +346,7 @@ class SiteUpdater(QMainWindow):
 	<div class="game-detail">
 		<h2>{game_name}</h2>
 		<div class="game-artwork-detail">
-			<img src="../../artwork/{game_name}.png" alt="{game_name} Artwork">
+			<img src="/artwork/{game_name}.png" alt="{game_name} Artwork">
 		</div>
 		<div class="download-section">
 			<h3>Download Mirrors</h3>
@@ -354,7 +354,7 @@ class SiteUpdater(QMainWindow):
 {mirror_list_html}			</ul>
 		</div>
 	</div>
-	<script src="../../script.js"></script>
+	<script src="/script.js"></script>
 </body>
 </html>"""
         return content
