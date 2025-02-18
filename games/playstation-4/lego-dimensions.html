@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="kevin-allen.org - Your Favortite ROM Site!">
+    
+    <!-- Enable standalone mode on iPhone -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- PWA Icons for iOS -->
+    <link rel="apple-touch-icon" href="icon/funky-icon-192.png">
+
+    <title>Lego Dimensions - KAR</title>
+    
+    <!-- Favicon for the website tab -->
+    <link rel="icon" href="../../recources/kevinallen.png" type="image/png">
+    
+    <!-- Include stylesheet -->
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+
+    <!-- Navigation bar for tabs -->
+    <nav>
+        <button class="tab" onclick="location.href='../../index.html'">Home</button>
+        <button class="tab" onclick="location.href='../../consoles/ps1.html'">PS1</button>
+        <button class="tab" onclick="location.href='../../consoles/ps2.html'">PS2</button>
+        <button class="tab" onclick="location.href='../../consoles/ps3.html'">PS3</button>
+        <button class="tab active" onclick="location.href='../../consoles/ps4.html'">PS4</button>
+        <button class="tab" onclick="location.href='../../consoles/psp.html'">PSP</button>
+        <button class="tab" onclick="location.href='../../consoles/ps-vita.html'">PSVita</button>
+        <button class="tab" onclick="location.href='../../consoles/xbox-360.html'">Xbox 360</button>
+        <button class="tab" onclick="location.href='../../consoles/xbox-one.html'">Xbox One</button>
+    </nav>
+
+    <!-- Games tab -->
+    <div id="games" class="tab-content active">
+        <section>
+            <div class="rom-info text-center p-4 border rounded-lg shadow-lg bg-gray-100">
+                <!-- Game Art -->
+                <img src="../../artwork/ps4/lego-dimensions-long-capsule.png" alt="LegoDimensions" class="w-full max-w-md mx-auto rounded-lg">
+
+                <!-- Description Content inside a bubble; statically visible -->
+                <div id="description" class="bubble" style="max-width:600px; margin:20px auto; padding:15px; background:#2a2a70; border-radius:25px; word-wrap: break-word;">
+                    <p>
+                        Lego Dimensions is a Lego-themed action-adventure game developed by Traveller's Tales and published by Warner Bros. Interactive Entertainment, released in September 2015 for multiple platforms, including Xbox 360. The game combines physical Lego toy figures with virtual gameplay, allowing players to place real Lego minifigures and models onto a USB toy pad to bring them into the game. The Starter Pack includes the toy pad and a main story campaign featuring characters like Batman, Gandalf, and Wyldstyle. Players can expand their experience by purchasing additional packs that introduce new levels, characters, and vehicles from various franchises such as DC Comics, The Lord of the Rings, The Simpsons, and more. Each character possesses unique abilities, and using specific figures unlocks corresponding Adventure Worlds—open-world areas for exploration and completing objectives. The game supports both single-player and multiplayer modes, offering a diverse and interactive experience.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Download Mirrors bubble with just the download button -->
+            <div class="bubble" style="max-width:600px; margin:20px auto; padding:15px; background:#2a2a70; border-radius:25px;">
+                <div class="mt-2">
+                    <div class="mirror-item flex justify-center items-center p-2 bg-white border rounded-lg mt-2">
+                        <a id="downloadBtn" href="javascript:void(0);" class="download-button" onclick="startCountdown(this, 'http://downloads.kevin-allen.org/downloads/ps4/Lego Dimensions.7z')">
+                            Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+    </div>
+
+    <!-- Page footer -->
+    <footer>
+        © 2025 kevin-allen.org
+    </footer>
+
+    <!-- JavaScript for tab functionality -->
+    <script>
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            document.querySelector(`.tab[onclick="showTab('${tabName}')"]`).classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+        }
+
+        function toggleSettingsMenu() {
+            const settingsMenu = document.getElementById('settings-options');
+            settingsMenu.style.display = settingsMenu.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function changeTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme); // Save the theme preference
+        }
+
+        // Load the saved theme from localStorage
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        changeTheme(savedTheme);
+
+        function startCountdown(btn, link) {
+            let countdown = 10;
+            btn.style.pointerEvents = 'none';
+            const originalText = btn.innerHTML;
+            btn.innerHTML = "Downloading in " + countdown + "s";
+            const interval = setInterval(() => {
+                countdown--;
+                if (countdown > 0) {
+                    btn.innerHTML = "Downloading in " + countdown + "s";
+                } else {
+                    clearInterval(interval);
+                    btn.innerHTML = originalText;
+                    window.open(link, "_blank");
+                    btn.style.pointerEvents = 'auto';
+                }
+            }, 1000);
+        }
+    </script>
+
+    <!-- Service Worker registration for caching and offline support -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, function(error) {
+                    console.log('ServiceWorker registration failed: ', error);
+                });
+            });
+        }
+    </script>
+
+</body>
+</html>
