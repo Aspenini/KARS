@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="kevin-allen.org - Your Favortite ROM Site!">
+    
+    <!-- Enable standalone mode on iPhone -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- PWA Icons for iOS -->
+    <link rel="apple-touch-icon" href="icon/funky-icon-192.png">
+
+    <title>MineCraft: Xbox 360 Edition - KAR</title>
+    
+    <!-- Favicon for the website tab -->
+    <link rel="icon" href="../../recources/kevinallen.png" type="image/png">
+    
+    <!-- Include stylesheet -->
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+
+    <!-- Navigation bar for tabs -->
+    <nav>
+        <button class="tab" onclick="location.href='../../index.html'">Home</button>
+        <button class="tab" onclick="location.href='../../consoles/ps1.html'">PS1</button>
+        <button class="tab" onclick="location.href='../../consoles/ps2.html'">PS2</button>
+        <button class="tab" onclick="location.href='../../consoles/ps3.html'">PS3</button>
+        <button class="tab" onclick="location.href='../../consoles/ps4.html'">PS4</button>
+        <button class="tab" onclick="location.href='../../consoles/psp.html'">PSP</button>
+        <button class="tab" onclick="location.href='../../consoles/ps-vita.html'">PSVita</button>
+        <button class="tab active" onclick="location.href='../../consoles/xbox-360.html'">Xbox 360</button>
+        <button class="tab" onclick="location.href='../../consoles/xbox-one.html'">Xbox One</button>
+    </nav>
+
+    <!-- Games tab -->
+    <div id="games" class="tab-content active">
+        <section>
+            <div class="rom-info text-center p-4 border rounded-lg shadow-lg bg-gray-100">
+                <!-- Game Art -->
+                <img src="../../artwork/xbox-360/minecraft-long-capsule.png" alt="MineCraftXbox360Edition" class="w-full max-w-md mx-auto rounded-lg">
+
+                <!-- Description Content inside a bubble; statically visible -->
+                <div id="description" class="bubble" style="max-width:600px; margin:20px auto; padding:15px; background:#2a2a70; border-radius:25px; word-wrap: break-word;">
+                    <p>
+                        Minecraft: Xbox 360 Edition is a console version of the popular sandbox game developed by 4J Studios in collaboration with Mojang Studios and Xbox Game Studios. Released on May 9, 2012, this edition brought the creative and survival aspects of Minecraft to the Xbox 360 platform. Players can build and explore their own worlds, either solo or with friends, supporting up to four players in split-screen mode and up to eight players online via Xbox Live. The game features a redesigned crafting system tailored for controllers and includes in-game tutorials to assist new players. While it received regular updates, the final update was the "Update Aquatic," after which no further feature updates were provided. Despite the discontinuation of updates, Minecraft: Xbox 360 Edition remains a beloved version among fans for its unique charm and gameplay experience.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Download Mirrors bubble with just the download button -->
+            <div class="bubble" style="max-width:600px; margin:20px auto; padding:15px; background:#2a2a70; border-radius:25px;">
+                <div class="mt-2">
+                    <a id="downloadBtnLiberty" href="javascript:void(0);" class="download-button" onclick="startCountdown(this, 'http://downloads.kevin-allen.org/downloads/xbox-360/MineCraft Xbox 360 Edition.zar')">
+                        Download
+                    </a>
+                </div>
+            </div>
+            
+        </section>
+    </div>
+
+    <!-- Page footer -->
+    <footer>
+        © 2025 kevin-allen.org
+    </footer>
+
+    <!-- JavaScript for tab functionality -->
+    <script>
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            document.querySelector(`.tab[onclick="showTab('${tabName}')"]`).classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+        }
+
+        function toggleSettingsMenu() {
+            const settingsMenu = document.getElementById('settings-options');
+            settingsMenu.style.display = settingsMenu.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function changeTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme); // Save the theme preference
+        }
+
+        // Load the saved theme from localStorage
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        changeTheme(savedTheme);
+
+        function startCountdown(btn, link) {
+            let countdown = 10;
+            btn.style.pointerEvents = 'none';
+            const originalText = btn.innerHTML;
+            btn.innerHTML = "Downloading in " + countdown + "s";
+            const interval = setInterval(() => {
+                countdown--;
+                if (countdown > 0) {
+                    btn.innerHTML = "Downloading in " + countdown + "s";
+                } else {
+                    clearInterval(interval);
+                    btn.innerHTML = originalText;
+                    window.open(link, "_blank");
+                    btn.style.pointerEvents = 'auto';
+                }
+            }, 1000);
+        }
+    </script>
+
+    <!-- Service Worker registration for caching and offline support -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, function(error) {
+                    console.log('ServiceWorker registration failed: ', error);
+                });
+            });
+        }
+    </script>
+
+</body>
+</html>
