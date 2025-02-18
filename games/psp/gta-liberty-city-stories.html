@@ -50,16 +50,12 @@
                 </div>
             </div>
             
-            <!-- Download Mirrors inside a bubble -->
+            <!-- Download Mirrors bubble with just the download button -->
             <div class="bubble" style="max-width:600px; margin:20px auto; padding:15px; background:#2a2a70; border-radius:25px;">
-                <h2 class="text-lg font-bold">Download Mirrors</h2>
                 <div class="mt-2">
-                    <div class="mirror-item flex justify-between items-center p-2 bg-white border rounded-lg mt-2">
-                        <span>Mega.nz</span>
-                        <a href="https://mega.nz/file/tNwXxJCZ#pra5KWIEgna_tZQmmyd3z20fmAUgncbWrLGfS2j0DMQ" target="_blank" class="download-button">
-                            Download
-                        </a>
-                    </div>
+                    <a id="downloadBtnLiberty" href="javascript:void(0);" class="download-button" onclick="startCountdown(this, 'http://downloads.kevin-allen.org/downloads/Grand Theft Auto - Liberty City Stories (USA) (En,Fr,De,Es,It) (v1.05).iso')">
+                        Download
+                    </a>
                 </div>
             </div>
             
@@ -102,6 +98,24 @@
         // Load the saved theme from localStorage
         const savedTheme = localStorage.getItem('theme') || 'light';
         changeTheme(savedTheme);
+
+        function startCountdown(btn, link) {
+            let countdown = 10;
+            btn.style.pointerEvents = 'none';
+            const originalText = btn.innerHTML;
+            btn.innerHTML = "Downloading in " + countdown + "s";
+            const interval = setInterval(() => {
+                countdown--;
+                if (countdown > 0) {
+                    btn.innerHTML = "Downloading in " + countdown + "s";
+                } else {
+                    clearInterval(interval);
+                    btn.innerHTML = originalText;
+                    window.open(link, "_blank");
+                    btn.style.pointerEvents = 'auto';
+                }
+            }, 1000);
+        }
     </script>
 
     <!-- Service Worker registration for caching and offline support -->
